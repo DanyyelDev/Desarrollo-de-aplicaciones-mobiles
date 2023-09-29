@@ -28,9 +28,8 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_register)
 
         FirebaseApp.initializeApp(this)
-
         database = DbManager.getDbHelper()
-        println(database)
+
         nameEditText = findViewById(R.id.name)
         emailEditText = findViewById(R.id.correoElectrónico)
         passwordEditText = findViewById(R.id.password)

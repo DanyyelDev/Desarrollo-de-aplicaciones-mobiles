@@ -7,15 +7,22 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
 import com.example.login.db.Database
 import com.example.login.db.DbManager
+import com.example.login.db.Usuario
 import java.util.UUID
 
 class Reports : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     private lateinit var database: Database
+
+    private lateinit var latitudEditText: EditText
+    private lateinit var longitudEditText: EditText
+    private lateinit var descripcionEditText: EditText
+    private lateinit var tipoDeReporteEditText: Spinner
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,10 +55,47 @@ class Reports : AppCompatActivity() {
             }
         }
 
+        latitudEditText = findViewById(R.id.editTextLatitud)
+        longitudEditText = findViewById(R.id.editTextLongitud)
+        tipoDeReporteEditText = findViewById(R.id.spinner)
+        descripcionEditText = findViewById(R.id.editTextDescripcion)
+
         val reportButton = findViewById<Button>(R.id.buttonReports)
         reportButton.setOnClickListener{
+
             val id = UUID.randomUUID().toString()
-            database.crearReporte(id,"123512412","124124141", "tipo 1", "Cierre vial villa del rio")
+            val latitud = latitudEditText.text.toString()
+            val longitud = longitudEditText.text.toString()
+            val tipoDeReporte = spinner.selectedItem.toString()
+            val descripcion = descripcionEditText.text.toString()
+
+            // Valida los datos de registro
+            if (latitud.isEmpty()) {
+                Toast.makeText(this, "La latitud es obligatoria", Toast.LENGTH_SHORT)
+                    .show()
+                return@setOnClickListener
+            }
+
+            if (longitud.isEmpty()) {
+                Toast.makeText(this, "La longitud es obligatoria", Toast.LENGTH_SHORT)
+                    .show()
+                return@setOnClickListener
+            }
+
+            if (tipoDeReporte.isEmpty()) {
+                Toast.makeText(this, "El tipo de reporte es obligatorio", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            // Realizar la lógica de registro (en este caso, almacenar en la base de datos local)
+            // Realizar la lógica de registro (en este caso, almacenar en la base de datos local)
+            if (database.crearReporte(id, latitud, longitud, tipoDeReporte, descripcion) != null) {
+                Toast.makeText(this, "Registro del reporte exitoso", Toast.LENGTH_SHORT).show()
+                finish()
+            } else {
+                Toast.makeText(this, "Registro fallido", Toast.LENGTH_SHORT).show()
+            }
+
         }
     }
 }
