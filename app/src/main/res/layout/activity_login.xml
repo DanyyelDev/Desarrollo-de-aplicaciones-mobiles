@@ -4,68 +4,72 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="264dp"
-        android:layout_height="106dp"
-        android:layout_marginTop="96dp"
-        android:layout_marginBottom="18dp"
-        android:text="Login"
-        android:textAlignment="center"
-        android:textSize="60sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tex1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.421"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.146"
-        tools:ignore="UnknownId" />
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
 
     <EditText
         android:id="@+id/passwordLogin"
         android:layout_width="313dp"
-        android:layout_height="106dp"
-        android:layout_marginTop="364dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
         android:hint="Password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/emailLogin" />
 
     <EditText
         android:id="@+id/emailLogin"
         android:layout_width="313dp"
-        android:layout_height="106dp"
-        android:layout_marginTop="260dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="364dp"
         android:hint="Correo electrónico"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonLogin"
-        android:layout_width="125dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginBottom="180dp"
+        android:layout_width="146dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="148dp"
+        android:backgroundTint="#B6D118"
         android:text="Login"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.818"
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="#EF0B0B" />
 
     <Button
         android:id="@+id/buttonRegister"
-        android:layout_width="125dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="180dp"
+        android:layout_width="146dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="148dp"
+        android:backgroundTint="#FFFFFF"
         android:text="Register"
+        android:textColor="#B6D118"
+        android:textSize="16sp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.216"
+        app:layout_constraintHorizontal_bias="0.188"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="273dp"
+        android:layout_height="284dp"
+        android:adjustViewBounds="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.208"
+        app:srcCompat="@drawable/bird_2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

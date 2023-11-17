@@ -4,23 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Reports">
+    tools:context=".Reportes">
 
     <Button
         android:id="@+id/buttonReports"
         android:layout_width="214dp"
         android:layout_height="42dp"
-        android:layout_marginBottom="68dp"
+        android:layout_marginBottom="48dp"
+        android:backgroundTint="#B6D118"
         android:text="Enviar reporte"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/editTextDescripcion"
         android:layout_width="300dp"
         android:layout_height="254dp"
-        android:layout_marginBottom="132dp"
+        android:layout_marginBottom="104dp"
         android:ems="10"
         android:gravity="start|top"
         android:hint="Descripcion:"
@@ -33,20 +36,20 @@
     <EditText
         android:id="@+id/editTextLatitud"
         android:layout_width="300dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="136dp"
-        android:text="Latitud:"
+        android:layout_height="40dp"
+        android:layout_marginTop="148dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextLongitud"
         android:layout_width="300dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="192dp"
-        android:text="Longitud:"
+        android:layout_height="40dp"
+        android:layout_marginTop="212dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -67,8 +70,9 @@
         android:id="@+id/spinner"
         android:layout_width="300dp"
         android:layout_height="36dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="64dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextLongitud" />
 
@@ -76,6 +80,7 @@
         android:id="@+id/textView7"
         android:layout_width="300dp"
         android:layout_height="26dp"
+        android:layout_marginBottom="8dp"
         android:text="Tipo de reporte:"
         app:layout_constraintBottom_toTopOf="@+id/spinner"
         app:layout_constraintEnd_toEndOf="parent"

@@ -10,11 +10,11 @@
     <string name="hint_longitud">Longitud</string>
 
     <string-array name="spinner_tipo_reporte">
-        <item>Tipo 1</item>
-        <item>Tipo 2</item>
-        <item>Tipo 3</item>
-        <item>Tipo 4</item>
-        <item>Tipo 5</item>
+        <item>Cierre vial</item>
+        <item>Accidente en la via</item>
+        <item>Trancon</item>
+        <item>Disminucion de carril</item>
+        <item>Otro</item>
     </string-array>
 
     <string name="lorem_ipsum">

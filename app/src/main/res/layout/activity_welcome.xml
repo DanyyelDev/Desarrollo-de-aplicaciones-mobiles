@@ -1,30 +1,21 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="255dp"
-        android:layout_height="162dp"
-        android:layout_marginTop="160dp"
-        android:background="#2196F3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="184dp"
         android:layout_height="53dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="72dp"
         android:text="Bienvenido"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#B6D118"
         android:textSize="34sp"
-        android:textStyle="bold"
+        android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,48 +23,73 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/buttonNoticias"
-        android:layout_width="205dp"
-        android:layout_height="39dp"
-        android:layout_marginBottom="312dp"
-        android:text="Noticias"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <Button
         android:id="@+id/buttonMapa"
-        android:layout_width="205dp"
-        android:layout_height="39dp"
-        android:layout_marginBottom="256dp"
+        android:layout_width="220dp"
+        android:layout_height="42dp"
+        android:layout_marginBottom="292dp"
+        android:backgroundTint="#B6D118"
         android:text="Mapa"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/buttonNovedades"
-        android:layout_width="205dp"
-        android:layout_height="39dp"
-        android:layout_marginBottom="200dp"
-        android:text="Novedades"
+        android:id="@+id/buttonNoticias"
+        android:layout_width="220dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="272dp"
+        android:backgroundTint="#B6D118"
+        android:text="Noticias"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonMapa"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/buttonReportes"
-        android:layout_width="205dp"
-        android:layout_height="39dp"
-        android:layout_marginBottom="140dp"
+        android:layout_width="220dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#B6D118"
         android:text="Reportes"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonNovedades"
         tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/buttonNovedades"
+        android:layout_width="220dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#B6D118"
+        android:text="Novedades"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonNoticias"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="248dp"
+        android:layout_height="257dp"
+        android:layout_marginTop="124dp"
+        android:adjustViewBounds="false"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bird_2"
+        tools:visibility="visible" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

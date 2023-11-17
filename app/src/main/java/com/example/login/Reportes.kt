@@ -12,10 +12,9 @@ import android.widget.Spinner
 import android.widget.Toast
 import com.example.login.db.Database
 import com.example.login.db.DbManager
-import com.example.login.db.Usuario
 import java.util.UUID
 
-class Reports : AppCompatActivity() {
+class Reportes : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     private lateinit var database: Database
 
@@ -24,11 +23,13 @@ class Reports : AppCompatActivity() {
     private lateinit var descripcionEditText: EditText
     private lateinit var tipoDeReporteEditText: Spinner
 
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint("MissingInflatedId", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reports)
 
+        val latitud = intent.getStringExtra("LATITUD")
+        val longitud = intent.getStringExtra("LONGITUD")
         database = DbManager.getDbHelper()
 
         val opciones = resources.getStringArray(R.array.spinner_tipo_reporte)
@@ -47,7 +48,7 @@ class Reports : AppCompatActivity() {
             ) {
                 // Aquí puedes manejar la selección del usuario
                 val opcionSeleccionada = opciones[position]
-                Toast.makeText(this@Reports, "Opción seleccionada: $opcionSeleccionada", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@Reportes, "Opción seleccionada: $opcionSeleccionada", Toast.LENGTH_SHORT).show()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -57,6 +58,9 @@ class Reports : AppCompatActivity() {
 
         latitudEditText = findViewById(R.id.editTextLatitud)
         longitudEditText = findViewById(R.id.editTextLongitud)
+        latitudEditText.setText("Latitud: $latitud")
+        longitudEditText.setText("Longitud: $longitud")
+
         tipoDeReporteEditText = findViewById(R.id.spinner)
         descripcionEditText = findViewById(R.id.editTextDescripcion)
 

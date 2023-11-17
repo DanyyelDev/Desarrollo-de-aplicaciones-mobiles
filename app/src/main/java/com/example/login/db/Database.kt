@@ -14,8 +14,17 @@ class Database (context: Context) {
         dbHelper.insertarReporte(id, latitud, longitud, tipoDeReporte, descripcion)
     }
 
+    fun crearNoticia(noticia:Noticia) {
+        dbHelper.insertarNoticia(noticia.id, noticia.title, noticia.description)
+    }
     fun leerUsuarios(): List<Usuario> {
         return dbHelper.leerUsuarios()
+    }
+    fun leerNoticias(): List<Noticia> {
+        return dbHelper.leerNoticias()
+    }
+    fun leerReportes(): List<Reports> {
+        return dbHelper.leerReportes()
     }
 
     fun buscarUsuario(correo: String): Usuario? {

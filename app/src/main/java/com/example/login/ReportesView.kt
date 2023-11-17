@@ -3,20 +3,19 @@ package com.example.login
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login.db.Database
 import com.example.login.db.DbManager
-import com.example.login.db.Noticia
-import com.example.login.db.adapters.NoticiaAdapter
+import com.example.login.db.Reports
+import com.example.login.db.adapters.ReporteAdapter
 
-class Noticias : AppCompatActivity() {
+class ReportesView : AppCompatActivity() {
     var database: Database = DbManager.getDbHelper()
-    val resultados:List<Noticia> =resultadosDB(database)
+    val resultados:List<Reports> = resultadosDB(database)
 
-    fun resultadosDB(db: Database):List<Noticia>{
-        return db.leerNoticias()
+    fun resultadosDB(db: Database):List<Reports>{
+        return db.leerReportes()
     }
     /*
         database.crearNoticia(Noticia("","Daño en la via", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nulla."))
@@ -29,11 +28,12 @@ class Noticias : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_noticias)
+
         initRecyclerView()
     }
     fun initRecyclerView(){
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerNews)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = NoticiaAdapter(resultados)
+        recyclerView.adapter = ReporteAdapter(resultados)
     }
 }

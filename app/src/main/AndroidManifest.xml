@@ -16,7 +16,7 @@
             android:name=".Noticias"
             android:exported="false" />
         <activity
-            android:name=".Reports"
+            android:name=".Reportes"
             android:exported="false" />
 
         <meta-data
@@ -44,6 +44,9 @@
             android:label="a" />
         <activity
             android:name=".RegisterActivity"
+            android:label="a" />
+        <activity
+            android:name=".ReportesView"
             android:label="a" />
     </application>
 

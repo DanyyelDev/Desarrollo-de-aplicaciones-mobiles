@@ -11,6 +11,7 @@ class DbHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL(CREATE_TABLE_USUARIOS)
         db.execSQL(CREATE_TABLE_REPORTS)
+        db.execSQL(CREATE_TABLE_NEWS)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
@@ -26,7 +27,7 @@ class DbHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         values.put("nombre", usuario.nombre)
         values.put("correo", usuario.correo)
         values.put("contraseña", usuario.contrasena)
-        db.insert("re", null, values)
+        db.insert("usuarios", null, values)
         db.close()
     }
     fun insertarReporte(id:String, latitud:String, longitud:String, tipoDeReporte:String, descripcion:String) {
@@ -38,6 +39,16 @@ class DbHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         values.put("tipoDeReporte", tipoDeReporte)
         values.put("descripcion", descripcion)
         db.insert("reports", null, values)
+        db.close()
+    }
+
+    fun insertarNoticia(id:String, title:String, description:String) {
+        val db = writableDatabase
+        val values = ContentValues()
+        values.put("id", id)
+        values.put("title", title)
+        values.put("description", description)
+        db.insert("news", null, values)
         db.close()
     }
 
@@ -61,6 +72,44 @@ class DbHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
     }
 
     @SuppressLint("Range")
+    fun leerReportes(): List<Reports> {
+        val reportes = mutableListOf<Reports>()
+        val db = readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM reports", null)
+        if (cursor.moveToFirst()) {
+            do {
+                val id = cursor.getString(cursor.getColumnIndex("id"))
+                val latitud = cursor.getString(cursor.getColumnIndex("latitud"))
+                val longitud = cursor.getString(cursor.getColumnIndex("longitud"))
+                val tipoDeReporte = cursor.getString(cursor.getColumnIndex("tipoDeReporte"))
+                val descripcion = cursor.getString(cursor.getColumnIndex("descripcion"))
+                reportes.add(Reports(id, latitud, longitud, tipoDeReporte, descripcion))
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+        db.close()
+        return reportes
+    }
+
+    @SuppressLint("Range")
+    fun leerNoticias(): List<Noticia> {
+        val noticias = mutableListOf<Noticia>()
+        val db = readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM news", null)
+        if (cursor.moveToFirst()) {
+            do {
+                val id = cursor.getString(cursor.getColumnIndex("id"))
+                val title = cursor.getString(cursor.getColumnIndex("title"))
+                val description = cursor.getString(cursor.getColumnIndex("description"))
+                noticias.add(Noticia(id, title, description))
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+        db.close()
+        return noticias
+    }
+
+    @SuppressLint("Range")
     fun buscarUsuario(correo: String): Usuario? {
         val db = readableDatabase
         val cursor = db.rawQuery("SELECT * FROM usuarios WHERE correo=?", arrayOf(correo))
@@ -76,6 +125,28 @@ class DbHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         db.close()
         return usuario
     }
+
+    /**
+    @SuppressLint("Range")
+    fun buscarReportes(reportss: String): MutableList<Reports>? {
+        val db = readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM reports", arrayOf(reportss))
+        val listReports: MutableList<Reports>
+        if (cursor.moveToFirst()) {
+            val id = cursor.getString(cursor.getColumnIndex("id"))
+            val latitud = cursor.getString(cursor.getColumnIndex("latitud"))
+            val longitud = cursor.getString(cursor.getColumnIndex("longitud"))
+            val tipoDeReporte = cursor.getString(cursor.getColumnIndex("tipoDeReporte"))
+            val descripcion = cursor.getString(cursor.getColumnIndex("descripcion"))
+            listReports.add(Reports(id, latitud, longitud, tipoDeReporte, descripcion))
+        } else {
+            null
+        }
+        cursor.close()
+        db.close()
+        return listReports
+    }
+    */
 
     fun actualizarUsuario(usuario: Usuario) {
         val db = writableDatabase
@@ -112,6 +183,14 @@ class DbHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         longitud TEXT,
         tipoDeReporte TEXT,
         descripcion TEXT
+      );
+    """
+
+        const val CREATE_TABLE_NEWS = """
+      CREATE TABLE news (
+        id TEXT,
+        title TEXT,
+        description TEXT
       );
     """
     }

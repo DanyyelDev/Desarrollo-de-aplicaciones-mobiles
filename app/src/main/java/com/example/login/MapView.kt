@@ -1,6 +1,9 @@
 package com.example.login
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.EditText
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -17,12 +20,22 @@ class MapView : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapClickLis
     private lateinit var txtLongitud: EditText
     private lateinit var mMap: GoogleMap
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map_view)
+        val buttonReports = findViewById<Button>(R.id.buttonReportesMap)
 
         txtLatitud = findViewById(R.id.txtLatitud)
         txtLongitud = findViewById(R.id.txtLongitud)
+
+        buttonReports.setOnClickListener {
+
+            val intent = Intent(this, Reportes::class.java)
+            intent.putExtra("LATITUD", txtLatitud.text.toString())
+            intent.putExtra("LONGITUD", txtLongitud.text.toString())
+            startActivity(intent)
+        }
 
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
@@ -57,4 +70,6 @@ class MapView : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapClickLis
         mMap.addMarker(MarkerOptions().position(mexico).title(""))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(mexico))
     }
+
+
 }
