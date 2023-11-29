@@ -14,6 +14,10 @@ class Database (context: Context) {
         dbHelper.insertarReporte(id, latitud, longitud, tipoDeReporte, descripcion)
     }
 
+    fun crearReporteEstadisticas(id:String, PersonasQueTransitandb:String, NumeroDeAccidentesdb:String, heridosdb:String, fallecidosdb:String, tipoDeActorInvolucradodb:String) {
+        dbHelper.insertarReporteEstadisticas(id, PersonasQueTransitandb, NumeroDeAccidentesdb, heridosdb, fallecidosdb, tipoDeActorInvolucradodb)
+    }
+
     fun crearNoticia(noticia:Noticia) {
         dbHelper.insertarNoticia(noticia.id, noticia.title, noticia.description)
     }

@@ -19,6 +19,7 @@ class WelcomeActivity : AppCompatActivity() {
         val buttonMapa = findViewById<Button>(R.id.buttonMapa)
         val buttonNoticias = findViewById<Button>(R.id.buttonNoticias)
         val buttonReportes = findViewById<Button>(R.id.buttonReportes)
+        val buttonNovedades = findViewById<Button>(R.id.buttonNovedades)
 
         buttonMapa.setOnClickListener {
             // Realiza la acción para el botón mapa
@@ -33,6 +34,11 @@ class WelcomeActivity : AppCompatActivity() {
 
         buttonReportes.setOnClickListener {
             val intent = Intent(this, ReportesView::class.java)
+            startActivity(intent)
+        }
+
+        buttonNovedades.setOnClickListener {
+            val intent = Intent(this, Novedades::class.java)
             startActivity(intent)
         }
     }

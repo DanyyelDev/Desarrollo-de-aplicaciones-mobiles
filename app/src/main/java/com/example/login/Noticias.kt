@@ -18,13 +18,9 @@ class Noticias : AppCompatActivity() {
     fun resultadosDB(db: Database):List<Noticia>{
         return db.leerNoticias()
     }
-    /*
-        database.crearNoticia(Noticia("","Daño en la via", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nulla."))
-        database.crearNoticia(Noticia("","Trancón", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nulla."))
-        database.crearNoticia(Noticia("","Policia", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nulla."))
-        database.crearNoticia(Noticia("","Disminución", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nulla."))
 
-        */
+
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

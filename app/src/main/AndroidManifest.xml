@@ -48,6 +48,9 @@
         <activity
             android:name=".ReportesView"
             android:label="a" />
+        <activity
+            android:name=".Novedades"
+            android:label="a" />
     </application>
 
 </manifest>

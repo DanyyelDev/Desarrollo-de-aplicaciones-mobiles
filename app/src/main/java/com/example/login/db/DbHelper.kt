@@ -11,6 +11,7 @@ class DbHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL(CREATE_TABLE_USUARIOS)
         db.execSQL(CREATE_TABLE_REPORTS)
+        db.execSQL(CREATE_TABLE_REPORTS_ESTADISTICAS)
         db.execSQL(CREATE_TABLE_NEWS)
     }
 
@@ -39,6 +40,18 @@ class DbHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         values.put("tipoDeReporte", tipoDeReporte)
         values.put("descripcion", descripcion)
         db.insert("reports", null, values)
+        db.close()
+    }
+    fun insertarReporteEstadisticas(id:String, PersonasQueTransitandb:String, NumeroDeAccidentesdb:String, heridosdb:String, fallecidosdb:String, tipoDeActorInvolucradodb:String) {
+        val db = writableDatabase
+        val values = ContentValues()
+        values.put("id", id)
+        values.put("PersonasQueTransitan", PersonasQueTransitandb)
+        values.put("NumeroDeAccidentes", NumeroDeAccidentesdb)
+        values.put("heridos", heridosdb)
+        values.put("fallecidos", fallecidosdb)
+        values.put("tipoDeActorInvolucrado", tipoDeActorInvolucradodb)
+        db.insert("reportsestadisticas", null, values)
         db.close()
     }
 
@@ -183,6 +196,17 @@ class DbHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         longitud TEXT,
         tipoDeReporte TEXT,
         descripcion TEXT
+      );
+    """
+
+        const val CREATE_TABLE_REPORTS_ESTADISTICAS = """
+      CREATE TABLE reportsestadisticas (
+        id TEXT,
+        PersonasQueTransitan TEXT,
+        NumeroDeAccidentes TEXT,
+        heridos TEXT,
+        fallecidos TEXT,
+        tipoDeActorInvolucrado TEXT
       );
     """
 
